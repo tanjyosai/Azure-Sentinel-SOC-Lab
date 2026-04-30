@@ -33,12 +33,26 @@ Verified global visibility by performing ICMP echo requests (Ping) from a remote
 Configured the Azure Monitor Agent (AMA) to stream raw security events. Below is an example of an **Event ID 4625 (Audit Failure)** captured, showing a malicious actor attempting to brute-force administrative credentials.
 ![Raw Event Logs](./img/event.png)
 
-### 4. Threat Intelligence Visualization (The Live Map)
-The final stage involved building a custom Sentinel Workbook. This dashboard uses geolocation logic to plot live attacks from across the globe onto an interactive map.
-![Sentinel Attack Map](./img/map.png)
+## 📊 Phase 4: Threat Intelligence & Data Analytics
 
-## 🕵️ Technical Artifact: KQL Threat Hunting
-This query transforms raw IP strings into geographical coordinates for the dashboard:
+To transform raw security events into actionable intelligence, I developed a dual-view dashboard within Microsoft Sentinel. By using HTML scaling, both visualizations are aligned for a professional SOC presentation.
+
+<p align="center">
+  <img src="https://github.com/tanjyosai/Azure-Sentinel-SOC-Lab/blob/main/img/map.png?raw=true" width="48%" alt="Geospatial Threat Map" />
+  <img src="https://github.com/tanjyosai/Azure-Sentinel-SOC-Lab/blob/main/img/pie_chart.png?raw=true" width="48%" alt="Attack Distribution" />
+</p>
+
+<p align="center">
+  <em>Figure 1: Side-by-side comparison of Global Attack origins (Left) and Quantitative Source Analysis (Right).</em>
+</p>
+---
+
+##  Technical Artifacts: KQL Threat Hunting
+
+
+
+#### 1. Map Geolocation Logic
+This query extracts physical coordinates from raw IP data to populate the interactive global dashboard.
 
 ```kql
 SecurityEvent
@@ -47,5 +61,17 @@ SecurityEvent
 | extend Country = tostring(Location.country), 
          Latitude = toreal(Location.latitude), 
          Longitude = toreal(Location.longitude)
-| where isnotempty(Country)
 | summarize EventCount = count() by IpAddress, Country, Latitude, Longitude
+```
+
+#### 2. Analytical Distribution Logic
+This query aggregates total attack volume by country, specifically handling "In-Processing" telemetry to ensure data integrity in the Pie Chart.
+
+```kql
+SecurityEvent
+| where EventID == 4625
+| extend CountryInfo = geo_info_from_ip_address(IpAddress).country
+| extend Country = iif(isempty(tostring(CountryInfo)), "Infiltrating / Processing", tostring(CountryInfo))
+| summarize TotalAtaques = count() by Country
+| sort by TotalAtaques desc
+```
