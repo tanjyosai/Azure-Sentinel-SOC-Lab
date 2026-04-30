@@ -45,7 +45,7 @@ To transform raw security events into actionable intelligence, I developed a dua
 <p align="center">
   <em>Figure 1: Side-by-side comparison of Global Attack origins (Left) and Quantitative Source Analysis (Right).</em>
 </p>
----
+
 
 ##  Technical Artifacts: KQL Threat Hunting
 
