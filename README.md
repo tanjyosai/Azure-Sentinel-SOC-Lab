@@ -33,7 +33,7 @@ Verified global visibility by performing ICMP echo requests (Ping) from a remote
 Configured the Azure Monitor Agent (AMA) to stream raw security events. Below is an example of an **Event ID 4625 (Audit Failure)** captured, showing a malicious actor attempting to brute-force administrative credentials.
 ![Raw Event Logs](./img/event.png)
 
-## 📊 Phase 4: Threat Intelligence & Data Analytics
+##  4. Threat Intelligence & Data Analytics
 
 To transform raw security events into actionable intelligence, I developed a dual-view dashboard within Microsoft Sentinel. By using HTML scaling, both visualizations are aligned for a professional SOC presentation.
 
