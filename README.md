@@ -35,8 +35,6 @@ Configured the Azure Monitor Agent (AMA) to stream raw security events. Below is
 
 ##  4. Threat Intelligence & Data Analytics
 
-To transform raw security events into actionable intelligence, I developed a dual-view dashboard within Microsoft Sentinel. By using HTML scaling, both visualizations are aligned for a professional SOC presentation.
-
 <p align="center">
   <img src="https://github.com/tanjyosai/Azure-Sentinel-SOC-Lab/blob/main/img/map.png?raw=true" width="48%" alt="Geospatial Threat Map" />
   <img src="https://github.com/tanjyosai/Azure-Sentinel-SOC-Lab/blob/main/img/pie_chart.png?raw=true" width="48%" alt="Attack Distribution" />
