@@ -18,32 +18,30 @@ This project demonstrates the implementation of a cloud-native **Security Operat
 | **Telemetry** | Windows Event Viewer (Event ID 4625) |
 | **Query Language** | KQL (Kusto Query Language) |
 | **Automation** | PowerShell |
-
 ##  Implementation Steps
 
 ### 1. Honeypot Exposure (Firewall Deactivation)
 To ensure the Honeypot was visible to automated internet scanners, I utilized PowerShell to disable all local firewall profiles. This allowed ingress ICMP and RDP traffic to reach the OS for telemetry collection.
-![Firewall Configuration](./img/firewall.png)
+![Firewall Configuration](img/firewall.png)
 
 ### 2. Global Visibility Validation
 Verified global visibility by performing ICMP echo requests (Ping) from a remote terminal to the public IP of the instance located in **Sweden Central**.
-![Ping Validation](./img/ping.png)
+![Ping Validation](img/ping.png)
 
 ### 3. SIEM Log Ingestion & Raw Telemetry
 Configured the Azure Monitor Agent (AMA) to stream raw security events. Below is an example of an **Event ID 4625 (Audit Failure)** captured, showing a malicious actor attempting to brute-force administrative credentials.
-![Raw Event Logs](./img/event.png)
+![Raw Event Logs](img/event.png)
 
 ##  4. Threat Intelligence & Data Analytics
 
 <p align="center">
-  <img src="https://github.com/tanjyosai/Azure-Sentinel-SOC-Lab/blob/main/img/map.png?raw=true" width="48%" alt="Geospatial Threat Map" />
-  <img src="https://github.com/tanjyosai/Azure-Sentinel-SOC-Lab/blob/main/img/pie_chart.png?raw=true" width="48%" alt="Attack Distribution" />
+  <img src="https://raw.githubusercontent.com/tanjyosai/Azure-Sentinel-SOC-Lab/main/img/map.png" width="48%" alt="Geospatial Threat Map" />
+  <img src="https://raw.githubusercontent.com/tanjyosai/Azure-Sentinel-SOC-Lab/main/img/pie_chart.png" width="48%" alt="Attack Distribution" />
 </p>
 
 <p align="center">
   <em>Figure 1: Side-by-side comparison of Global Attack origins (Left) and Quantitative Source Analysis (Right).</em>
 </p>
-
 
 ##  Technical Artifacts: KQL Threat Hunting
 
