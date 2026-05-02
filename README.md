@@ -1,6 +1,9 @@
 #  Azure Sentinel (SIEM) SOC Lab: Live Attack Monitoring
+![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white) ![Sentinel](https://img.shields.io/badge/Microsoft%20Sentinel-%230078D4.svg?style=for-the-badge&logo=microsoft&logoColor=white) ![KQL](https://img.shields.io/badge/Query-KQL-blue?style=for-the-badge) ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
+
 
 ##  Project Overview
+
 This project demonstrates the implementation of a cloud-native **Security Operations Center (SOC)** and a targeted **Honeypot** environment. I provisioned a Windows Virtual Machine in **Sweden Central**, intentionally exposed to the internet to attract and analyze real-world RDP brute-force attacks. Telemetry is ingested into a **Log Analytics Workspace** and visualized using **Microsoft Sentinel (SIEM)** via custom KQL queries.
 
 ##  Objectives
